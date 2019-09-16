@@ -3,7 +3,6 @@
 timestamps {
 
 node () {
-
 	stage ('App-IC - Checkout') {
  	 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git-login', url: 'https://github.com/Bernard-RGB/TP1.git']]]) 
 	}
@@ -16,6 +15,15 @@ node () {
  				bat "mvn clean package " 
 			} 
  		} 
+	}
+	stage ('App-IC - Quality Analysis') {
+		withMaven(maven: 'maven') { 
+ 			if(isUnix()) {
+ 				sh "mvn sonar:sonar" 
+			} else { 
+ 				bat "mvn sonar:sonar" 
+			} 
+ 		} 		
 	}
 	stage ('App-IC - Post build actions') {
 /*
