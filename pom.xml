@@ -32,5 +32,9 @@
       <url>http://localhost:8081/repository/maven-releases/</url> 
     </repository> 
   </distributionManagement> 
-  
+  <scm>
+    <connection>scm:git:https://github.com/Bernard-RGB/TP1.git</connection> 
+    <url>https://github.com/Bernard-RGB/TP1.git</url> 
+    <developerConnection>scm:git:https://github.com/Bernard-RGB/TP1.git</developerConnection>
+  </scm> 
 </project>
